@@ -20,21 +20,20 @@ $login = $salesforce->login(USERNAME,PASSWORD,SECURITY_TOKEN);
 
 $api_versions = $salesforce->getAPIVersions();
 $limits = $salesforce->getOrgLimits();
-echo "<pre>"; print_r($limits);exit;
 $resource = $salesforce->getAvailableResources();
 $objects = $salesforce->getAllObjects();
-
 $date = new DateTime();
 
-$good_metadata = $salesforce->getObjectMetadata('Account');
-$good_metadata_all = $salesforce->getObjectMetadata('Account', true);
-$good_metadata_since = $salesforce->getObjectMetadata('Account', true, $date);
-$bad_metadata = $salesforce->getObjectMetadata('SomeOtherObject');
-
-$create_account = $salesforce->create( 'Account', ['name' => 'New Account'] );
-$update_project = $salesforce->update( 'Account', $create_account->id, ['name' => 'Changed'] );
-$project = $salesforce->get( 'Account', $create_account->id );
-$project_with_fields = $salesforce->get( 'Account', $create_account->id, ['Name', 'OwnerId'] );
-$delete_project = $salesforce->delete( 'Account', $create_account->id );
-
-$response = $salesforce->searchSOQL('SELECT name from Position__c',true);
+//$good_metadata = $salesforce->getObjectMetadata('Account');
+//$good_metadata_all = $salesforce->getObjectMetadata('Account', true);
+//$good_metadata_since = $salesforce->getObjectMetadata('Account', true, $date);
+//$bad_metadata = $salesforce->getObjectMetadata('SomeOtherObject');
+$rand = rand(0,100);
+$create_order = $salesforce->create( 'Order', ['AccountId'=>'0017F000003Dcok','EffectiveDate'=>'2017-06-03','Status'=>'Draft','TotalAmount'=>20.55] );
+echo "<pre>"; print_r($good_metadata_all);exit;
+//$create_account = $salesforce->create( 'Account', ['name' => 'New Account'.$rand] );
+//$update_project = $salesforce->update( 'Account', $create_account->id, ['name' => 'Changed'.$rand] );
+//$project = $salesforce->get( 'Account', $create_account->id );
+//$project_with_fields = $salesforce->get( 'Account', $create_account->id, ['Name', 'OwnerId'] );
+//$delete_project = $salesforce->delete( 'Account', $create_account->id );
+//$response = $salesforce->searchSOQL('SELECT name from Position__c',true);
